@@ -3,75 +3,55 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const companyProfile = [
-  { label: 'Tên công ty', value: 'Công ty TNHH Japan-Tech (Japan-Tech Co., Ltd.)' },
-  { label: 'Đại diện pháp luật', value: 'Ông Đinh Gia Bình – Giám đốc' },
-  { label: 'Lĩnh vực hoạt động', value: 'Chuyển giao công nghệ Nhật Bản, Nông nghiệp tuần hoàn, Xử lý môi trường & Tự động hóa' },
-  { label: 'Trụ sở chính', value: 'TP. Hồ Chí Minh, Việt Nam (Điền địa chỉ cụ thể)' },
-  { label: 'Ngôn ngữ làm việc', value: 'Tiếng Việt · Tiếng Nhật (日本語) · Tiếng Anh (English)' },
-  { label: 'Liên hệ', value: 'contact@japantech.vn | +84 (0) 900 000 000' },
+  { id: 'prof1', label: 'Tên công ty', value: 'Công ty TNHH Japan-Tech (Japan-Tech Co., Ltd.)' },
+  { id: 'prof2', label: 'Đại diện pháp luật', value: 'Ông Đinh Gia Bình – Giám đốc' },
+  { id: 'prof3', label: 'Lĩnh vực hoạt động', value: 'Chuyển giao công nghệ Nhật Bản, Nông nghiệp tuần hoàn, Xử lý môi trường & Tự động hóa' },
+  { id: 'prof4', label: 'Trụ sở chính', value: 'TP. Hồ Chí Minh, Việt Nam (Điền địa chỉ cụ thể)' },
+  { id: 'prof5', label: 'Ngôn ngữ làm việc', value: 'Tiếng Việt · Tiếng Nhật (日本語) · Tiếng Anh (English)' },
+  { id: 'prof6', label: 'Liên hệ', value: 'contact@japantech.vn | +84 (0) 900 000 000' },
 ];
 
 const leadership = [
-  {
-    name: 'Ông Đinh Gia Bình',
-    role: 'Giám đốc Điều hành (Director)',
-    bio: 'Hơn 15 năm kinh nghiệm kết nối thương mại và điều phối các dự án chuyển giao công nghệ giữa doanh nghiệp Nhật Bản và Việt Nam.',
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    name: 'Ông Takahashi Kenji',
-    role: 'Cố vấn Kỹ thuật Trưởng (Placeholder)',
-    bio: 'Chuyên gia cấp cao trong lĩnh vực công nghệ môi trường và xử lý nước thải công nghiệp với 20 năm công tác tại Osaka, Nhật Bản.',
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    name: 'Bà Nguyễn Minh Anh',
-    role: 'Trưởng phòng Triển khai Dự án (Placeholder)',
-    bio: 'Phụ trách quản lý tiến độ, điều phối kỹ thuật song ngữ Việt – Nhật và đảm bảo tiêu chuẩn vận hành sau bàn giao.',
-    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
-  },
+  { id: 'lead1', name: 'Ông Đinh Gia Bình', role: 'Giám đốc Điều hành (Director)', bio: 'Hơn 15 năm kinh nghiệm kết nối thương mại và điều phối các dự án chuyển giao công nghệ giữa doanh nghiệp Nhật Bản và Việt Nam.', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80' },
+  { id: 'lead2', name: 'Ông Takahashi Kenji', role: 'Cố vấn Kỹ thuật Trưởng (Placeholder)', bio: 'Chuyên gia cấp cao trong lĩnh vực công nghệ môi trường và xử lý nước thải công nghiệp với 20 năm công tác tại Osaka, Nhật Bản.', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80' },
+  { id: 'lead3', name: 'Bà Nguyễn Minh Anh', role: 'Trưởng phòng Triển khai Dự án (Placeholder)', bio: 'Phụ trách quản lý tiến độ, điều phối kỹ thuật song ngữ Việt – Nhật và đảm bảo tiêu chuẩn vận hành sau bàn giao.', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80' },
 ];
 ---
 
 <Layout title="Về chúng tôi | Công ty TNHH Japan-Tech">
-  <!-- Page Header -->
-  <section class="bg-[#0B1F3A] py-20 text-white">
-    <div class="mx-auto max-w-7xl px-6">
+  <section class="bg-[#0B1F3A] py-16 text-white lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">About Us</p>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Về Công ty TNHH Japan-Tech</h1>
-      <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
+      <h1 data-i18n="aboutPageTitle" class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">Về Công ty TNHH Japan-Tech</h1>
+      <p data-i18n="aboutPageDesc" class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
         Cầu nối uy tín đưa tinh hoa công nghệ, quy trình quản trị và tiêu chuẩn kỹ thuật Nhật Bản vào thực tiễn sản xuất tại Việt Nam.
       </p>
     </div>
   </section>
 
-  <!-- Story + Vision / Mission -->
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-6">
-      <div class="reveal grid items-center gap-12 lg:grid-cols-12">
+  <section class="bg-white py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-6">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Câu chuyện doanh nghiệp</p>
-          <h2 class="mt-3 text-3xl font-bold text-slate-900">
+          <p data-i18n="aboutStoryEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Câu chuyện doanh nghiệp</p>
+          <h2 data-i18n="aboutStoryTitle" class="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
             Đồng hành từ khảo sát kỹ thuật đến vận hành bền vững.
           </h2>
-          <p class="mt-5 text-base leading-relaxed text-slate-600">
-            Công ty TNHH Japan-Tech hoạt động chuyên sâu trong lĩnh vực kết nối và chuyển giao công nghệ từ các doanh nghiệp, viện nghiên cứu Nhật Bản sang Việt Nam. Chúng tôi tập trung vào các giải pháp mang lại giá trị thực tiễn cao: tiết kiệm tài nguyên, bảo vệ môi trường và tối ưu hiệu suất lâu dài.
-          </p>
-          <p class="mt-4 text-base leading-relaxed text-slate-600">
-            *(Đoạn văn bản mẫu: Thay thế bằng 3–5 câu giới thiệu chính thức về lịch sử thành lập và giá trị cốt lõi của Japan-Tech.)*
+          <p data-i18n="aboutDesc1" class="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+            Công ty TNHH Japan-Tech được thành lập với sứ mệnh trở thành cầu nối công nghệ tin cậy giữa Nhật Bản và Việt Nam. Chúng tôi không chỉ cung cấp thiết bị mà còn chuyển giao trọn gói quy trình vận hành, tư duy quản trị chất lượng và cam kết đồng hành lâu dài cùng đối tác.
           </p>
 
-          <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div class="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2">
             <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
-              <h3 class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Tầm nhìn</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Trở thành đối tác chuyển giao công nghệ xanh và giải pháp sản xuất chuẩn Nhật hàng đầu tại Việt Nam.
+              <h3 data-i18n="visionTitle" class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Tầm nhìn</h3>
+              <p data-i18n="visionDesc" class="mt-2 text-sm leading-relaxed text-slate-600">
+                Trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực chuyển giao công nghệ xanh và giải pháp sản xuất bền vững từ Nhật Bản.
               </p>
             </div>
             <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
-              <h3 class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Sứ mệnh</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Nâng cao năng lực cạnh tranh của doanh nghiệp Việt bằng công nghệ chính xác, bền vững và tối ưu chi phí.
+              <h3 data-i18n="missionTitle" class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Sứ mệnh</h3>
+              <p data-i18n="missionDesc" class="mt-2 text-sm leading-relaxed text-slate-600">
+                Nâng cao năng lực cạnh tranh cho doanh nghiệp Việt thông qua công nghệ chuẩn xác, thân thiện môi trường và hiệu quả kinh tế cao.
               </p>
             </div>
           </div>
@@ -81,26 +61,25 @@ const leadership = [
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
             alt="Japan-Tech Corporate Office"
-            class="h-[420px] w-full object-cover shadow-md"
+            class="h-[260px] w-full object-cover shadow-md sm:h-[380px] lg:h-[420px]"
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Japanese-Style Company Profile Table (Kaisha Gaiyou) -->
-  <section class="border-y border-slate-200 bg-slate-50 py-20">
-    <div class="mx-auto max-w-5xl px-6">
+  <section class="border-y border-slate-200 bg-slate-50 py-16 lg:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
       <div class="reveal">
         <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Company Profile · 会社概要</p>
-        <h2 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Hồ sơ pháp lý & Thông tin doanh nghiệp</h2>
+        <h2 data-i18n="profileTitle" class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Hồ sơ pháp lý & Thông tin doanh nghiệp</h2>
 
         <div class="mt-8 overflow-hidden border-t-2 border-[#0B1F3A] bg-white">
           <dl class="divide-y divide-slate-200">
             {companyProfile.map((row) => (
-              <div class="grid gap-2 px-6 py-5 sm:grid-cols-12 sm:gap-6">
-                <dt class="text-sm font-semibold text-[#0B1F3A] sm:col-span-4">{row.label}</dt>
-                <dd class="text-sm text-slate-700 sm:col-span-8">{row.value}</dd>
+              <div class="grid gap-1 px-5 py-4 sm:grid-cols-12 sm:gap-6 sm:px-6 sm:py-5">
+                <dt data-i18n={`${row.id}L`} class="text-sm font-semibold text-[#0B1F3A] sm:col-span-4">{row.label}</dt>
+                <dd data-i18n={`${row.id}V`} class="text-sm text-slate-700 sm:col-span-8">{row.value}</dd>
               </div>
             ))}
           </dl>
@@ -109,38 +88,30 @@ const leadership = [
     </div>
   </section>
 
-  <!-- Leadership Team -->
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-6">
+  <section class="bg-white py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="reveal max-w-2xl">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Leadership & Experts</p>
-        <h2 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Đội ngũ lãnh đạo & Chuyên gia</h2>
+        <p data-i18n="leaderEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Đội ngũ lãnh đạo & Chuyên gia</p>
+        <h2 data-i18n="leaderTitle" class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Những người trực tiếp đồng hành cùng dự án</h2>
       </div>
 
-      <div class="reveal mt-10 grid gap-8 md:grid-cols-3">
+      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
         {leadership.map((person) => (
           <div class="group border border-slate-200 bg-white transition-all hover:border-[#0B1F3A]/40 hover:shadow-lg">
             <div class="overflow-hidden bg-slate-100">
-              <img
-                src={person.img}
-                alt={person.name}
-                class="h-72 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
+              <img src={person.img} alt={person.name} class="h-64 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:h-72" />
             </div>
             <div class="p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
+              <p data-i18n={`${person.id}Role`} class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
               <h3 class="mt-1 text-lg font-bold text-slate-900">{person.name}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
+              <p data-i18n={`${person.id}Bio`} class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div class="mt-16 text-center">
-        <a
-          href={`${base}/contact`}
-          class="inline-flex items-center gap-2 bg-[#0B1F3A] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#173660]"
-        >
+      <div class="mt-14 text-center">
+        <a href={`${base}/contact`} data-i18n="aboutCta" class="inline-flex items-center gap-2 bg-[#0B1F3A] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#173660]">
           Kết nối với ban lãnh đạo
         </a>
       </div>
