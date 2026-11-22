@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Japan-Tech | Chuyển Giao Công Nghệ Nhật Bản' } = Astro.props;
+---
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Google Fonts: Inter + Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-slate-900 antialiased font-['Inter','Noto_Sans_JP',sans-serif]">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Global Scroll-Reveal Styling -->
+    <style is:global>
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+
+    <script src="../scripts/scripts.js"></script>
+  </body>
+</html>
