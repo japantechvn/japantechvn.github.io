@@ -25,7 +25,7 @@ const { title = 'Japan-Tech | Chuyển Giao Công Nghệ Nhật Bản' } = Astro
       rel="stylesheet"
     />
   </head>
-  <body class="flex min-h-screen flex-col bg-white text-slate-900 antialiased font-['Inter','Noto_Sans_JP',sans-serif]">
+<body class="flex min-h-screen flex-col overflow-x-hidden bg-white text-slate-900 antialiased font-['Inter','Noto_Sans_JP',sans-serif]">
     <Navbar />
     <main class="flex-1">
       <slot />
@@ -33,17 +33,26 @@ const { title = 'Japan-Tech | Chuyển Giao Công Nghệ Nhật Bản' } = Astro
     <Footer />
 
     <!-- Global Scroll-Reveal Styling -->
-    <style is:global>
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.65s ease-out, transform 0.65s ease-out;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-stagger > *.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 
     <script src="../scripts/scripts.js"></script>
   </body>
