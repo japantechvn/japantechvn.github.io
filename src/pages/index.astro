@@ -4,6 +4,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const services = [
   {
+    id: 'srv1',
     num: '01',
     title: 'Nông nghiệp tuần hoàn',
     enTitle: 'Circular Agriculture',
@@ -11,6 +12,7 @@ const services = [
     tags: ['Vi sinh Nhật Bản', 'Zero-Waste', 'Tự động hóa'],
   },
   {
+    id: 'srv2',
     num: '02',
     title: 'Xử lý chất thải & Môi trường',
     enTitle: 'Environmental Solutions',
@@ -18,6 +20,7 @@ const services = [
     tags: ['Xử lý nước thải', 'Giảm phát thải', 'ISO 14001'],
   },
   {
+    id: 'srv3',
     num: '03',
     title: 'Tự động hóa & Sản xuất thông minh',
     enTitle: 'Smart Manufacturing',
@@ -25,6 +28,7 @@ const services = [
     tags: ['Kaizen', 'IoT Công nghiệp', 'Tiết kiệm điện'],
   },
   {
+    id: 'srv4',
     num: '04',
     title: 'Tư vấn & Đào tạo kỹ thuật',
     enTitle: 'Technical Advisory',
@@ -34,42 +38,29 @@ const services = [
 ];
 
 const processSteps = [
-  {
-    step: '01',
-    title: 'Khảo sát & Đánh giá',
-    desc: 'Tiếp nhận nhu cầu, khảo sát thực tế tại nhà máy/trang trại và phân tích bài toán kỹ thuật.',
-  },
-  {
-    step: '02',
-    title: 'Thiết kế giải pháp',
-    desc: 'Phối hợp với đối tác Nhật Bản xây dựng phương án công nghệ tối ưu chi phí và hiệu suất.',
-  },
-  {
-    step: '03',
-    title: 'Chuyển giao & Lắp đặt',
-    desc: 'Nhập khẩu thiết bị, thi công lắp đặt và hiệu chỉnh hệ thống theo tiêu chuẩn kỹ thuật nghiêm ngặt.',
-  },
-  {
-    step: '04',
-    title: 'Đào tạo & Đồng hành',
-    desc: 'Bàn giao quy trình vận hành, đào tạo đội ngũ kỹ thuật viên và bảo trì định kỳ dài hạn.',
-  },
+  { id: 'proc1', step: '01', title: 'Khảo sát & Đánh giá', desc: 'Tiếp nhận nhu cầu, khảo sát thực tế tại nhà máy/trang trại và phân tích bài toán kỹ thuật.' },
+  { id: 'proc2', step: '02', title: 'Thiết kế giải pháp', desc: 'Phối hợp với đối tác Nhật Bản xây dựng phương án công nghệ tối ưu chi phí và hiệu suất.' },
+  { id: 'proc3', step: '03', title: 'Chuyển giao & Lắp đặt', desc: 'Nhập khẩu thiết bị, thi công lắp đặt và hiệu chỉnh hệ thống theo tiêu chuẩn kỹ thuật nghiêm ngặt.' },
+  { id: 'proc4', step: '04', title: 'Đào tạo & Đồng hành', desc: 'Bàn giao quy trình vận hành, đào tạo đội ngũ kỹ thuật viên và bảo trì định kỳ dài hạn.' },
 ];
 
 const leadership = [
   {
+    id: 'lead1',
     name: 'Ông Đinh Gia Bình',
     role: 'Giám đốc Điều hành (Director)',
     bio: 'Hơn 15 năm kinh nghiệm kết nối thương mại và điều phối các dự án chuyển giao công nghệ giữa doanh nghiệp Nhật Bản và Việt Nam.',
     img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
   },
   {
+    id: 'lead2',
     name: 'Ông Takahashi Kenji',
     role: 'Cố vấn Kỹ thuật Trưởng (Placeholder)',
     bio: 'Chuyên gia cấp cao trong lĩnh vực công nghệ môi trường và xử lý nước thải công nghiệp với 20 năm công tác tại Osaka, Nhật Bản.',
     img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80',
   },
   {
+    id: 'lead3',
     name: 'Bà Nguyễn Minh Anh',
     role: 'Trưởng phòng Triển khai Dự án (Placeholder)',
     bio: 'Phụ trách quản lý tiến độ, điều phối kỹ thuật song ngữ Việt – Nhật và đảm bảo tiêu chuẩn vận hành sau bàn giao.',
@@ -79,6 +70,7 @@ const leadership = [
 
 const projects = [
   {
+    id: 'proj1',
     category: 'Nông nghiệp tuần hoàn',
     title: 'Hệ thống xử lý phụ phẩm nông nghiệp thành phân bón hữu cơ sinh học',
     location: 'Lâm Đồng, Việt Nam · 2025',
@@ -87,6 +79,7 @@ const projects = [
     img: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1000&q=80',
   },
   {
+    id: 'proj2',
     category: 'Xử lý môi trường',
     title: 'Trạm xử lý nước thải tuần hoàn cho nhà máy chế biến thực phẩm',
     location: 'Bình Dương, Việt Nam · 2025',
@@ -265,9 +258,9 @@ const projects = [
                 />
               </div>
               <div class="p-6">
-                <p class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
+                <p data-i18n={`${person.id}Role`} class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
                 <h4 class="mt-1 text-lg font-bold text-slate-900">{person.name}</h4>
-                <p class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
+                <p data-i18n={`${person.id}Bio`} class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
               </div>
             </div>
           ))}
@@ -300,8 +293,8 @@ const projects = [
                   {item.enTitle}
                 </span>
               </div>
-              <h3 class="mt-4 text-xl font-bold text-slate-900">{item.title}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.desc}</p>
+              <h3 data-i18n={`${item.id}Title`} class="mt-4 text-xl font-bold text-slate-900">{item.title}</h3>
+              <p data-i18n={`${item.id}Desc`} class="mt-3 text-sm leading-relaxed text-slate-600">{item.desc}</p>
             </div>
 
             <div class="mt-6 flex flex-wrap gap-2 border-t border-slate-100 pt-5">
@@ -329,8 +322,8 @@ const projects = [
         {processSteps.map((s) => (
           <div class="relative border-t-2 border-[#0B1F3A] pt-6">
             <span class="text-xs font-bold tracking-widest text-sky-700">BƯỚC {s.step}</span>
-            <h3 class="mt-2 text-lg font-bold text-slate-900">{s.title}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
+            <h3 data-i18n={`${s.id}Title`} class="mt-2 text-lg font-bold text-slate-900">{s.title}</h3>
+            <p data-i18n={`${s.id}Desc`} class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -356,16 +349,22 @@ const projects = [
                 alt={p.title}
                 class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               />
-              <span class="absolute left-4 top-4 bg-[#0B1F3A] px-3 py-1 text-xs font-semibold text-white">
+              <span data-i18n={`${p.id}Cat`} class="absolute left-4 top-4 bg-[#0B1F3A] px-3 py-1 text-xs font-semibold text-white">
                 {p.category}
               </span>
             </div>
             <div class="p-6 sm:p-8">
               <p class="text-xs font-medium text-slate-500">{p.location}</p>
-              <h3 class="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{p.title}</h3>
+              <h3 data-i18n={`${p.id}Title`} class="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{p.title}</h3>
               <div class="mt-5 space-y-2 border-t border-slate-100 pt-4 text-sm">
-                <p class="text-slate-600"><strong class="text-slate-900">Công nghệ áp dụng:</strong> {p.tech}</p>
-                <p class="text-slate-600"><strong class="text-slate-900">Kết quả đạt được:</strong> {p.result}</p>
+                <p class="text-slate-600">
+                  <strong data-i18n="projTechLabel" class="text-slate-900">Công nghệ áp dụng:</strong>{' '}
+                  <span data-i18n={`${p.id}Tech`}>{p.tech}</span>
+                </p>
+                <p class="text-slate-600">
+                  <strong data-i18n="projResultLabel" class="text-slate-900">Kết quả đạt được:</strong>{' '}
+                  <span data-i18n={`${p.id}Result`}>{p.result}</span>
+                </p>
               </div>
             </div>
           </article>
