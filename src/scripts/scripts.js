@@ -38,6 +38,11 @@ const translations = {
     projectsTitle: 'Hiệu quả thực tế từ các dự án đã triển khai',
     contactEyebrow: '05 / Liên hệ hợp tác',
     contactTitle: 'Kết nối với đội ngũ kỹ thuật của chúng tôi',
+    footerBrand: 'CÔNG TY TNHH JAPAN-TECH',
+    footerDesc: 'Đối tác tin cậy trong chuyển giao công nghệ tiên tiến từ Nhật Bản, hướng tới phát triển bền vững cho doanh nghiệp Việt Nam.',
+    footerNavTitle: 'Điều hướng',
+    footerLangTitle: 'Ngôn ngữ',
+    footerCopy: '© 2026 Công ty TNHH Japan-Tech. All rights reserved.',
   },
   ja: {
     navAbout: '会社概要',
@@ -77,6 +82,11 @@ const translations = {
     projectsTitle: 'ベトナム国内での導入事例と成果',
     contactEyebrow: '05 / お問い合わせ',
     contactTitle: '技術チームへお気軽にご相談ください',
+    footerBrand: 'JAPAN-TECH 有限会社',
+    footerDesc: '日本の先端技術移転における信頼のパートナーとして、ベトナム企業の持続可能な成長を支援します。',
+    footerNavTitle: 'ナビゲーション',
+    footerLangTitle: '対応言語',
+    footerCopy: '© 2026 Japan-Tech Co., Ltd. All rights reserved.',
   },
   en: {
     navAbout: 'About Us',
@@ -116,6 +126,11 @@ const translations = {
     projectsTitle: 'Proven Results from Completed Projects',
     contactEyebrow: '05 / Contact Us',
     contactTitle: 'Connect with Our Technical Team',
+    footerBrand: 'JAPAN-TECH CO., LTD.',
+    footerDesc: 'Your trusted partner in transferring advanced Japanese technology for the sustainable growth of Vietnamese enterprises.',
+    footerNavTitle: 'Navigation',
+    footerLangTitle: 'Languages',
+    footerCopy: '© 2026 Japan-Tech Co., Ltd. All rights reserved.',
   },
 };
 

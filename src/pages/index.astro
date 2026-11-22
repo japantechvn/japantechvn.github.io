@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const services = [
   {
@@ -97,424 +98,279 @@ const projects = [
 ---
 
 <Layout title="Công ty TNHH Japan-Tech | Chuyển Giao Công Nghệ Nhật Bản">
+  <!-- 1. ENTERPRISE HERO SECTION -->
+  <section class="relative overflow-hidden bg-[#0B1F3A] text-white">
+    <div class="pointer-events-none absolute inset-0 opacity-10" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 48px 48px;"></div>
 
-  <main>
-    <!-- 1. ENTERPRISE HERO SECTION -->
-    <section class="relative overflow-hidden bg-[#0B1F3A] text-white">
-      <!-- Subtle Blueprint Grid Background -->
-      <div class="pointer-events-none absolute inset-0 opacity-10" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 48px 48px;"></div>
-
-      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:py-28">
-        <!-- Left Copy -->
-        <div class="lg:col-span-7">
-          <div class="mb-6 inline-flex items-center gap-2 border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-medium tracking-[0.15em] text-sky-200 uppercase">
-            <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
-            <span data-i18n="heroBadge">Japan – Vietnam Technology Transfer</span>
-          </div>
-
-          <h1 data-i18n="heroTitle" class="text-4xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-[54px]">
-            Cầu nối chuyển giao công nghệ tiên tiến từ Nhật Bản.
-          </h1>
-
-          <p data-i18n="heroDesc" class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            Công ty TNHH Japan-Tech đồng hành cùng doanh nghiệp Việt Nam triển khai các giải pháp nông nghiệp tuần hoàn, xử lý môi trường và tối ưu hóa vận hành theo tiêu chuẩn kỹ thuật Nhật Bản.
-          </p>
-
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              data-i18n="heroBtnPrimary"
-              class="inline-flex items-center gap-2 bg-white px-7 py-3.5 text-sm font-semibold text-[#0B1F3A] transition-colors hover:bg-slate-100"
-            >
-              Liên hệ tư vấn dự án
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
-            </a>
-            <a
-              href="#services"
-              data-i18n="heroBtnSecondary"
-              class="inline-flex items-center justify-center border border-white/30 px-7 py-3.5 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/10"
-            >
-              Khám phá lĩnh vực
-            </a>
-          </div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:py-28">
+      <!-- Left Copy -->
+      <div class="lg:col-span-7">
+        <div class="mb-5 inline-flex items-center gap-2 border border-white/20 bg-white/5 px-3 py-1.5 text-[11px] font-medium tracking-[0.15em] text-sky-200 uppercase sm:text-xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+          <span data-i18n="heroBadge">Japan – Vietnam Technology Transfer</span>
         </div>
 
-        <!-- Right Visual Showcase -->
-        <div class="relative lg:col-span-5">
-          <div class="relative overflow-hidden border border-white/15 bg-slate-900 shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
-              alt="Modern Japanese Industrial Technology"
-              class="h-[380px] w-full object-cover opacity-90 sm:h-[440px]"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/85 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 right-6 border-l-2 border-sky-400 pl-4">
-              <p class="text-xs font-semibold uppercase tracking-widest text-sky-300">Tiêu chuẩn Nhật Bản</p>
-              <p class="mt-1 text-sm text-white/90">Chính xác · Bền vững · Hiệu quả dài hạn</p>
-            </div>
-          </div>
-        </div>
-      </div>
+        <h1 data-i18n="heroTitle" class="text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-[54px]">
+          Cầu nối chuyển giao công nghệ tiên tiến từ Nhật Bản.
+        </h1>
 
-      <!-- Bottom Metrics Strip (Animated Counters) -->
-      <div class="border-t border-white/10 bg-[#08172B]">
-        <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-8 md:grid-cols-4">
-          <div>
-            <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="100" data-suffix="%">0%</p>
-            <p class="mt-1 text-xs text-slate-400 sm:text-sm">Công nghệ chuẩn Nhật Bản</p>
-          </div>
-          <div>
-            <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="4" data-suffix="+" data-pad="true">00+</p>
-            <p class="mt-1 text-xs text-slate-400 sm:text-sm">Lĩnh vực chuyển giao cốt lõi</p>
-          </div>
-          <div>
-            <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="10" data-suffix="+">0+</p>
-            <p class="mt-1 text-xs text-slate-400 sm:text-sm">Đối tác kỹ thuật Nhật Bản</p>
-          </div>
-          <div>
-            <p class="text-2xl font-bold text-white sm:text-3xl">VI · JP · EN</p>
-            <p class="mt-1 text-xs text-slate-400 sm:text-sm">Đội ngũ điều phối đa ngôn ngữ</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. PARTNER LOGOS BAR (Monochrome SVG Placeholders) -->
-    <section class="border-b border-slate-200 bg-slate-50 py-10">
-      <div class="mx-auto max-w-7xl px-6">
-        <p class="mb-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Đối tác công nghệ & Khách hàng tiêu biểu (Logo minh họa)
+        <p data-i18n="heroDesc" class="mt-5 max-w-2xl text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-lg">
+          Công ty TNHH Japan-Tech đồng hành cùng doanh nghiệp Việt Nam triển khai các giải pháp nông nghiệp tuần hoàn, xử lý môi trường và tối ưu hóa vận hành theo tiêu chuẩn kỹ thuật Nhật Bản.
         </p>
-        <div class="grid grid-cols-2 items-center justify-items-center gap-8 opacity-65 grayscale md:grid-cols-5">
-          <div class="flex items-center gap-2 font-bold tracking-wider text-slate-700">
-            <span class="h-5 w-5 rounded-full border-2 border-slate-700"></span> NIPPON ECO
-          </div>
-          <div class="flex items-center gap-2 font-bold tracking-wider text-slate-700">
-            <span class="h-4 w-4 rotate-45 bg-slate-700"></span> KANSAI BIO
-          </div>
-          <div class="flex items-center gap-2 font-bold tracking-wider text-slate-700">
-            <span class="h-5 w-2 bg-slate-700"></span> TOKYO AGRI
-          </div>
-          <div class="flex items-center gap-2 font-bold tracking-wider text-slate-700">
-            <span class="h-4 w-4 border-2 border-slate-700"></span> KYOTO TECH
-          </div>
-          <div class="col-span-2 flex items-center gap-2 font-bold tracking-wider text-slate-700 md:col-span-1">
-            <span class="h-3 w-6 bg-slate-700"></span> OSAKA LABS
+
+        <div class="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+          <a
+            href={`${base}/contact`}
+            class="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-sm font-semibold text-[#0B1F3A] transition-colors hover:bg-slate-100"
+          >
+            <span data-i18n="heroBtnPrimary">Liên hệ tư vấn dự án</span>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
+          </a>
+          <a
+            href={`${base}/services`}
+            data-i18n="heroBtnSecondary"
+            class="inline-flex items-center justify-center border border-white/30 px-7 py-3.5 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/10"
+          >
+            Khám phá lĩnh vực
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Visual Showcase -->
+      <div class="relative lg:col-span-5">
+        <div class="relative overflow-hidden border border-white/15 bg-slate-900 shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
+            alt="Modern Japanese Industrial Technology"
+            class="h-[260px] w-full object-cover opacity-90 sm:h-[380px] lg:h-[440px]"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/85 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5 border-l-2 border-sky-400 pl-4">
+            <p class="text-xs font-semibold uppercase tracking-widest text-sky-300">Tiêu chuẩn Nhật Bản</p>
+            <p class="mt-1 text-xs text-white/90 sm:text-sm">Chính xác · Bền vững · Hiệu quả dài hạn</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- 3. ABOUT US + VISION / MISSION + LEADERSHIP -->
-    <section id="about" class="bg-white py-24">
-      <div class="mx-auto max-w-7xl px-6">
-        <!-- Intro & Image -->
-        <div class="reveal grid items-center gap-12 lg:grid-cols-12">
-          <div class="lg:col-span-6">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">01 / Về chúng tôi</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Đưa tinh hoa kỹ thuật Nhật Bản vào thực tiễn doanh nghiệp Việt Nam.
-            </h2>
-            <p class="mt-5 text-base leading-relaxed text-slate-600">
-              Công ty TNHH Japan-Tech được thành lập với sứ mệnh trở thành cầu nối công nghệ tin cậy giữa Nhật Bản và Việt Nam. Chúng tôi không chỉ cung cấp thiết bị mà còn chuyển giao trọn gói quy trình vận hành, tư duy quản trị chất lượng và cam kết đồng hành lâu dài cùng đối tác.
-            </p>
-            <p class="mt-4 text-base leading-relaxed text-slate-600">
-              *(Đoạn văn bản mẫu: Có thể thay thế bằng 3–5 câu giới thiệu chính thức về lịch sử hình thành và thế mạnh cốt lõi của Japan-Tech.)*
-            </p>
-
-            <!-- Vision & Mission Cards -->
-            <div class="mt-8 grid gap-6 sm:grid-cols-2">
-              <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Tầm nhìn</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                  Trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực chuyển giao công nghệ xanh và giải pháp sản xuất bền vững từ Nhật Bản.
-                </p>
-              </div>
-              <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Sứ mệnh</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                  Nâng cao năng lực cạnh tranh cho doanh nghiệp Việt thông qua công nghệ chuẩn xác, thân thiện môi trường và hiệu quả kinh tế cao.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-6">
-            <div class="relative bg-slate-100 p-3">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
-                alt="Japan-Tech Office Placeholder"
-                class="h-[420px] w-full object-cover"
-              />
-              <div class="mt-3 flex items-center justify-between px-2 text-xs text-slate-500">
-                <span>Ảnh minh họa không gian làm việc / nhà máy đối tác</span>
-                <span>JAPAN-TECH CO., LTD.</span>
-              </div>
-            </div>
-          </div>
+    <!-- Bottom Metrics Strip -->
+    <div class="border-t border-white/10 bg-[#08172B]">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-7 sm:px-6 md:grid-cols-4 md:py-8">
+        <div>
+          <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="100" data-suffix="%">0%</p>
+          <p data-i18n="metric1" class="mt-1 text-xs text-slate-400 sm:text-sm">Công nghệ chuẩn Nhật Bản</p>
         </div>
-
-        <!-- Leadership & Experts -->
-        <div class="reveal mt-24 border-t border-slate-200 pt-16">
-          <div class="max-w-2xl">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Đội ngũ lãnh đạo & Chuyên gia</p>
-            <h3 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Những người trực tiếp đồng hành cùng dự án</h3>
-          </div>
-
-          <div class="mt-10 grid gap-8 md:grid-cols-3">
-            {leadership.map((person) => (
-              <div class="group border border-slate-200 bg-white transition-all hover:border-[#0B1F3A]/40 hover:shadow-lg">
-                <div class="overflow-hidden bg-slate-100">
-                  <img
-                    src={person.img}
-                    alt={person.name}
-                    class="h-72 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div class="p-6">
-                  <p class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
-                  <h4 class="mt-1 text-lg font-bold text-slate-900">{person.name}</h4>
-                  <p class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div>
+          <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="4" data-suffix="+" data-pad="true">00+</p>
+          <p data-i18n="metric2" class="mt-1 text-xs text-slate-400 sm:text-sm">Lĩnh vực chuyển giao cốt lõi</p>
+        </div>
+        <div>
+          <p class="counter text-2xl font-bold text-white sm:text-3xl" data-target="10" data-suffix="+">0+</p>
+          <p data-i18n="metric3" class="mt-1 text-xs text-slate-400 sm:text-sm">Đối tác kỹ thuật Nhật Bản</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold text-white sm:text-3xl">VI · JP · EN</p>
+          <p data-i18n="metric4" class="mt-1 text-xs text-slate-400 sm:text-sm">Đội ngũ điều phối đa ngôn ngữ</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 4. CORE SERVICES -->
-    <section id="services" class="border-y border-slate-200 bg-slate-50 py-24">
-      <div class="mx-auto max-w-7xl px-6">
-        <div class="reveal flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div class="max-w-2xl">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">02 / Lĩnh vực & Dịch vụ</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Giải pháp công nghệ chuyển giao cốt lõi
-            </h2>
-          </div>
-          <p class="max-w-sm text-sm text-slate-500">
-            Mỗi giải pháp đều được thiết kế linh hoạt theo quy mô và điều kiện vận hành thực tế tại Việt Nam.
+  <!-- 2. PARTNER LOGOS BAR -->
+  <section class="border-b border-slate-200 bg-slate-50 py-8 sm:py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p data-i18n="partnersLabel" class="mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 sm:text-xs">
+        Đối tác công nghệ & Khách hàng tiêu biểu (Logo minh họa)
+      </p>
+      <div class="grid grid-cols-2 items-center justify-items-center gap-6 opacity-65 grayscale md:grid-cols-5 md:gap-8">
+        <div class="flex items-center gap-2 text-sm font-bold tracking-wider text-slate-700">
+          <span class="h-4 w-4 rounded-full border-2 border-slate-700"></span> NIPPON ECO
+        </div>
+        <div class="flex items-center gap-2 text-sm font-bold tracking-wider text-slate-700">
+          <span class="h-3.5 w-3.5 rotate-45 bg-slate-700"></span> KANSAI BIO
+        </div>
+        <div class="flex items-center gap-2 text-sm font-bold tracking-wider text-slate-700">
+          <span class="h-4 w-2 bg-slate-700"></span> TOKYO AGRI
+        </div>
+        <div class="flex items-center gap-2 text-sm font-bold tracking-wider text-slate-700">
+          <span class="h-3.5 w-3.5 border-2 border-slate-700"></span> KYOTO TECH
+        </div>
+        <div class="col-span-2 flex items-center gap-2 text-sm font-bold tracking-wider text-slate-700 md:col-span-1">
+          <span class="h-3 w-5 bg-slate-700"></span> OSAKA LABS
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ABOUT US + VISION / MISSION + LEADERSHIP -->
+  <section id="about" class="bg-white py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-6">
+          <p data-i18n="aboutEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">01 / Về chúng tôi</p>
+          <h2 data-i18n="aboutTitle" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            Đưa tinh hoa kỹ thuật Nhật Bản vào thực tiễn doanh nghiệp Việt Nam.
+          </h2>
+          <p data-i18n="aboutDesc1" class="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+            Công ty TNHH Japan-Tech được thành lập với sứ mệnh trở thành cầu nối công nghệ tin cậy giữa Nhật Bản và Việt Nam. Chúng tôi không chỉ cung cấp thiết bị mà còn chuyển giao trọn gói quy trình vận hành, tư duy quản trị chất lượng và cam kết đồng hành lâu dài cùng đối tác.
           </p>
+
+          <!-- Vision & Mission Cards -->
+          <div class="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2">
+            <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
+              <h3 data-i18n="visionTitle" class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Tầm nhìn</h3>
+              <p data-i18n="visionDesc" class="mt-2 text-sm leading-relaxed text-slate-600">
+                Trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực chuyển giao công nghệ xanh và giải pháp sản xuất bền vững từ Nhật Bản.
+              </p>
+            </div>
+            <div class="border-l-2 border-[#0B1F3A] bg-slate-50 p-5">
+              <h3 data-i18n="missionTitle" class="text-sm font-bold uppercase tracking-wider text-[#0B1F3A]">Sứ mệnh</h3>
+              <p data-i18n="missionDesc" class="mt-2 text-sm leading-relaxed text-slate-600">
+                Nâng cao năng lực cạnh tranh cho doanh nghiệp Việt thông qua công nghệ chuẩn xác, thân thiện môi trường và hiệu quả kinh tế cao.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="reveal mt-12 grid gap-6 md:grid-cols-2">
-          {services.map((item) => (
-            <div class="group flex flex-col justify-between border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#0B1F3A] hover:shadow-md">
-              <div>
-                <div class="flex items-center justify-between">
-                  <span class="font-mono text-2xl font-bold text-[#0B1F3A]/25 transition-colors group-hover:text-[#0B1F3A]">
-                    {item.num}
-                  </span>
-                  <span class="text-xs font-medium uppercase tracking-widest text-slate-400">
-                    {item.enTitle}
-                  </span>
-                </div>
-                <h3 class="mt-4 text-xl font-bold text-slate-900">{item.title}</h3>
-                <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.desc}</p>
-              </div>
-
-              <div class="mt-6 flex flex-wrap gap-2 border-t border-slate-100 pt-5">
-                {item.tags.map((tag) => (
-                  <span class="bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">{tag}</span>
-                ))}
-              </div>
+        <div class="lg:col-span-6">
+          <div class="relative bg-slate-100 p-2.5 sm:p-3">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
+              alt="Japan-Tech Office Placeholder"
+              class="h-[260px] w-full object-cover sm:h-[380px] lg:h-[420px]"
+            />
+            <div class="mt-3 flex items-center justify-between px-2 text-xs text-slate-500">
+              <span>Japan-Tech Workspace</span>
+              <span>JAPAN-TECH CO., LTD.</span>
             </div>
-          ))}
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- 5. 4-STEP WORKFLOW -->
-    <section id="process" class="bg-white py-24">
-      <div class="mx-auto max-w-7xl px-6">
+      <!-- Leadership & Experts -->
+      <div class="mt-16 border-t border-slate-200 pt-14 lg:mt-24 lg:pt-16">
         <div class="reveal max-w-2xl">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">03 / Quy trình làm việc</p>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Quy trình triển khai chuẩn mực 4 bước
-          </h2>
+          <p data-i18n="leaderEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">Đội ngũ lãnh đạo & Chuyên gia</p>
+          <h3 data-i18n="leaderTitle" class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Những người trực tiếp đồng hành cùng dự án</h3>
         </div>
 
-        <div class="reveal mt-14 grid gap-8 md:grid-cols-4">
-          {processSteps.map((s) => (
-            <div class="relative border-t-2 border-[#0B1F3A] pt-6">
-              <span class="text-xs font-bold tracking-widest text-sky-700">BƯỚC {s.step}</span>
-              <h3 class="mt-2 text-lg font-bold text-slate-900">{s.title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. FEATURED PROJECTS (CASE STUDIES) -->
-    <section id="projects" class="border-t border-slate-200 bg-slate-50 py-24">
-      <div class="mx-auto max-w-7xl px-6">
-        <div class="reveal max-w-2xl">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">04 / Dự án tiêu biểu</p>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Hiệu quả thực tế từ các dự án đã triển khai
-          </h2>
-        </div>
-
-        <div class="reveal mt-12 grid gap-8 lg:grid-cols-2">
-          {projects.map((p) => (
-            <article class="overflow-hidden border border-slate-200 bg-white">
-              <div class="relative h-64 overflow-hidden bg-slate-200">
+        <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
+          {leadership.map((person) => (
+            <div class="group border border-slate-200 bg-white transition-all hover:border-[#0B1F3A]/40 hover:shadow-lg">
+              <div class="overflow-hidden bg-slate-100">
                 <img
-                  src={p.img}
-                  alt={p.title}
-                  class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  src={person.img}
+                  alt={person.name}
+                  class="h-64 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:h-72"
                 />
-                <span class="absolute left-4 top-4 bg-[#0B1F3A] px-3 py-1 text-xs font-semibold text-white">
-                  {p.category}
+              </div>
+              <div class="p-6">
+                <p class="text-xs font-semibold uppercase tracking-wider text-sky-700">{person.role}</p>
+                <h4 class="mt-1 text-lg font-bold text-slate-900">{person.name}</h4>
+                <p class="mt-3 text-sm leading-relaxed text-slate-600">{person.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CORE SERVICES -->
+  <section id="services" class="border-y border-slate-200 bg-slate-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <p data-i18n="servicesEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">02 / Lĩnh vực & Dịch vụ</p>
+          <h2 data-i18n="servicesTitle" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            Giải pháp công nghệ chuyển giao cốt lõi
+          </h2>
+        </div>
+      </div>
+
+      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-2 lg:mt-12">
+        {services.map((item) => (
+          <div class="group flex flex-col justify-between border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0B1F3A] hover:shadow-md sm:p-8">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-2xl font-bold text-[#0B1F3A]/25 transition-colors group-hover:text-[#0B1F3A]">
+                  {item.num}
+                </span>
+                <span class="text-xs font-medium uppercase tracking-widest text-slate-400">
+                  {item.enTitle}
                 </span>
               </div>
-              <div class="p-8">
-                <p class="text-xs font-medium text-slate-500">{p.location}</p>
-                <h3 class="mt-2 text-xl font-bold text-slate-900">{p.title}</h3>
-                <div class="mt-5 space-y-2 border-t border-slate-100 pt-4 text-sm">
-                  <p class="text-slate-600"><strong class="text-slate-900">Công nghệ áp dụng:</strong> {p.tech}</p>
-                  <p class="text-slate-600"><strong class="text-slate-900">Kết quả đạt được:</strong> {p.result}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+              <h3 class="mt-4 text-xl font-bold text-slate-900">{item.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.desc}</p>
+            </div>
 
-    <!-- 7. CONTACT SECTION -->
-    <section id="contact" class="bg-white py-24">
-      <div class="mx-auto max-w-7xl px-6">
-        <div class="reveal grid gap-12 lg:grid-cols-12">
-          <!-- Left: Corporate Info -->
-          <div class="lg:col-span-5">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">05 / Liên hệ hợp tác</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-              Kết nối với đội ngũ kỹ thuật của chúng tôi
-            </h2>
-            <p class="mt-4 text-sm leading-relaxed text-slate-600">
-              Để lại thông tin dự án hoặc yêu cầu kỹ thuật. Japan-Tech sẽ phản hồi và sắp xếp buổi trao đổi trực tiếp trong vòng 24 giờ làm việc.
-            </p>
-
-            <div class="mt-8 space-y-5 border-t border-slate-200 pt-8 text-sm">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Trụ sở chính</p>
-                <p class="mt-1 font-medium text-slate-900">TP. Hồ Chí Minh, Việt Nam (Điền địa chỉ cụ thể)</p>
-              </div>
-              <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Hotline</p>
-                <p class="mt-1 font-medium text-slate-900">+84 (0) 900 000 000</p>
-              </div>
-              <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Email liên hệ</p>
-                <p class="mt-1 font-medium text-slate-900">contact@japantech.vn</p>
-              </div>
+            <div class="mt-6 flex flex-wrap gap-2 border-t border-slate-100 pt-5">
+              {item.tags.map((tag) => (
+                <span class="bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">{tag}</span>
+              ))}
             </div>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-          <!-- Right: B2B Inquiry Form -->
-          <div class="border border-slate-200 bg-slate-50 p-8 lg:col-span-7">
-            <form id="contact-form" class="space-y-5">
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Họ và tên *</label>
-                  <input type="text" required placeholder="Nguyễn Văn A" class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]" />
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Tên doanh nghiệp</label>
-                  <input type="text" placeholder="Công ty ABC" class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]" />
-                </div>
-              </div>
+  <!-- 5. 4-STEP WORKFLOW -->
+  <section id="process" class="bg-white py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <p data-i18n="processEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">03 / Quy trình làm việc</p>
+        <h2 data-i18n="processTitle" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          Quy trình triển khai chuẩn mực 4 bước
+        </h2>
+      </div>
 
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Email *</label>
-                  <input type="email" required placeholder="name@company.com" class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]" />
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Số điện thoại *</label>
-                  <input type="tel" required placeholder="09xx xxx xxx" class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Lĩnh vực quan tâm</label>
-                <select class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]">
-                  <option>Nông nghiệp tuần hoàn</option>
-                  <option>Xử lý chất thải & Môi trường</option>
-                  <option>Tự động hóa & Sản xuất thông minh</option>
-                  <option>Tư vấn chuyển giao công nghệ khác</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700">Nội dung yêu cầu *</label>
-                <textarea rows="4" required placeholder="Mô tả ngắn gọn nhu cầu hoặc quy mô dự án của quý công ty..." class="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#0B1F3A]"></textarea>
-              </div>
-
-              <button
-                type="submit"
-                class="w-full cursor-pointer bg-[#0B1F3A] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#173660]"
-              >
-                Gửi yêu cầu tư vấn
-              </button>
-              <p id="form-status" class="hidden text-center text-sm font-medium text-emerald-700">
-                Cảm ơn quý khách! Đây là bản demo giao diện (bước tiếp theo sẽ kết nối gửi về email thật).
-              </p>
-            </form>
+      <div class="reveal-stagger mt-12 grid gap-8 md:grid-cols-4">
+        {processSteps.map((s) => (
+          <div class="relative border-t-2 border-[#0B1F3A] pt-6">
+            <span class="text-xs font-bold tracking-widest text-sky-700">BƯỚC {s.step}</span>
+            <h3 class="mt-2 text-lg font-bold text-slate-900">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
           </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- 8. CORPORATE FOOTER -->
-  <footer class="bg-[#0B1F3A] text-slate-300">
-    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
-      <div class="md:col-span-2">
-        <span class="text-lg font-bold tracking-wider text-white">CÔNG TY TNHH JAPAN-TECH</span>
-        <p class="mt-3 max-w-md text-sm leading-relaxed text-slate-400">
-          Đối tác tin cậy trong chuyển giao công nghệ tiên tiến từ Nhật Bản, hướng tới phát triển bền vững cho doanh nghiệp Việt Nam.
-        </p>
-      </div>
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-widest text-white">Điều hướng</h4>
-        <ul class="mt-4 space-y-2.5 text-sm">
-          <li><a href="#about" class="hover:text-white">Về chúng tôi</a></li>
-          <li><a href="#services" class="hover:text-white">Lĩnh vực & Dịch vụ</a></li>
-          <li><a href="#process" class="hover:text-white">Quy trình triển khai</a></li>
-          <li><a href="#projects" class="hover:text-white">Dự án tiêu biểu</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-widest text-white">Ngôn ngữ</h4>
-        <ul class="mt-4 space-y-2.5 text-sm">
-          <li>Tiếng Việt (VI)</li>
-          <li>日本語 (JP)</li>
-          <li>English (EN)</li>
-        </ul>
+        ))}
       </div>
     </div>
-    <div class="border-t border-white/10 py-6 text-center text-xs text-slate-500">
-      © 2026 Công ty TNHH Japan-Tech. All rights reserved.
+  </section>
+
+  <!-- 6. FEATURED PROJECTS -->
+  <section id="projects" class="border-t border-slate-200 bg-slate-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <p data-i18n="projectsEyebrow" class="text-xs font-bold uppercase tracking-[0.2em] text-[#0B1F3A]">04 / Dự án tiêu biểu</p>
+        <h2 data-i18n="projectsTitle" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          Hiệu quả thực tế từ các dự án đã triển khai
+        </h2>
+      </div>
+
+      <div class="reveal-stagger mt-10 grid gap-8 lg:grid-cols-2 lg:mt-12">
+        {projects.map((p) => (
+          <article class="overflow-hidden border border-slate-200 bg-white">
+            <div class="relative h-56 overflow-hidden bg-slate-200 sm:h-64">
+              <img
+                src={p.img}
+                alt={p.title}
+                class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <span class="absolute left-4 top-4 bg-[#0B1F3A] px-3 py-1 text-xs font-semibold text-white">
+                {p.category}
+              </span>
+            </div>
+            <div class="p-6 sm:p-8">
+              <p class="text-xs font-medium text-slate-500">{p.location}</p>
+              <h3 class="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{p.title}</h3>
+              <div class="mt-5 space-y-2 border-t border-slate-100 pt-4 text-sm">
+                <p class="text-slate-600"><strong class="text-slate-900">Công nghệ áp dụng:</strong> {p.tech}</p>
+                <p class="text-slate-600"><strong class="text-slate-900">Kết quả đạt được:</strong> {p.result}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
-  </footer>
-
-  <!-- Subtle Corporate Scroll-Reveal Styling -->
-  <style>
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-
-  <!-- External Script -->
-  <script src="../scripts/scripts.js"></script>
+  </section>
 </Layout>
