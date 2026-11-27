@@ -1,17 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Liên hệ | Công ty TNHH Japan-Tech">
-  <section class="bg-[#0B1F3A] py-16 text-white lg:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Contact Us</p>
-      <h1 data-i18n="contactPageTitle" class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">Liên hệ hợp tác</h1>
-      <p data-i18n="contactPageDesc" class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-        Đội ngũ tư vấn kỹ thuật song ngữ Việt – Nhật của Japan-Tech luôn sẵn sàng tiếp nhận yêu cầu và đồng hành cùng doanh nghiệp của bạn.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Contact Us"
+    jp="お問い合わせ"
+    titleKey="contactPageTitle"
+    title="Liên hệ hợp tác"
+    descKey="contactPageDesc"
+    desc="Đội ngũ tư vấn kỹ thuật song ngữ Việt – Nhật của Japan-Tech luôn sẵn sàng tiếp nhận yêu cầu và đồng hành cùng doanh nghiệp của bạn."
+  />
 
   <section class="bg-white py-16 lg:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">

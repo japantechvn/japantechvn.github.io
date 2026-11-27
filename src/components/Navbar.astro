@@ -8,116 +8,285 @@ const navLinks = [
   { href: `${base}/projects`, label: 'Đối tác & Dự án', i18n: 'navProjects' },
   { href: `${base}/contact`, label: 'Liên hệ', i18n: 'navContact' },
 ];
+
+const isActive = (href: string) => currentPath === href || currentPath === `${href}/`;
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-    <!-- Brand Logo -->
-    <a href={`${base}/`} class="group flex items-center gap-3">
-      <div class="flex h-9 w-9 items-center justify-center bg-[#0B1F3A] text-white transition-transform duration-300 group-hover:scale-105">
+<header id="site-header" class="site-header fixed inset-x-0 top-0 z-50">
+  <div class="header-bg absolute inset-0 -z-10"></div>
+
+  <div class="hdr-inner mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
+    <!-- Brand -->
+    <a href={`${base}/`} class="group flex items-center gap-3" aria-label="Japan-Tech – Home">
+      <span class="logo-mark flex h-9 w-9 items-center justify-center transition-transform duration-500 group-hover:rotate-90">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M4 18V6l8 6 8-6v12" />
         </svg>
-      </div>
-      <div class="leading-tight">
-        <span class="block text-base font-bold tracking-wider text-[#0B1F3A]">JAPAN-TECH</span>
-        <span class="block text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">Technology Transfer</span>
-      </div>
+      </span>
+      <span class="leading-tight">
+        <span class="block text-base font-bold tracking-wider">JAPAN-TECH</span>
+        <span class="hidden text-[10px] font-medium uppercase tracking-[0.18em] opacity-60 sm:block">Technology Transfer</span>
+      </span>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href || currentPath === `${link.href}/`;
-        return (
-          <a
-            href={link.href}
-            data-i18n={link.i18n}
-            class={`transition-colors hover:text-[#0B1F3A] ${isActive ? 'font-semibold text-[#0B1F3A]' : ''}`}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-9 text-sm font-medium lg:flex">
+      {navLinks.map((link) => (
+        <a href={link.href} data-i18n={link.i18n} class:list={['nav-link', { active: isActive(link.href) }]}>
+          {link.label}
+        </a>
+      ))}
     </nav>
 
-    <!-- Right Controls -->
+    <!-- Right controls -->
     <div class="flex items-center gap-3">
-      <!-- Sliding Language Switcher -->
-      <div
-        id="lang-switcher"
-        class="relative flex items-center rounded-full border border-slate-200 bg-slate-100 p-1 text-xs font-semibold text-slate-600"
-      >
-        <div
-          id="lang-pill"
-          class="absolute left-1 top-1 h-6 w-9 rounded-full bg-[#0B1F3A] transition-transform duration-300 ease-out"
-        ></div>
-        <button data-lang="vi" data-index="0" class="lang-btn relative z-10 h-6 w-9 cursor-pointer text-white transition-colors">VI</button>
-        <button data-lang="ja" data-index="1" class="lang-btn relative z-10 h-6 w-9 cursor-pointer transition-colors hover:text-slate-900">JP</button>
-        <button data-lang="en" data-index="2" class="lang-btn relative z-10 h-6 w-9 cursor-pointer transition-colors hover:text-slate-900">EN</button>
+      <div id="lang-switcher" class="lang-switch relative flex items-center rounded-full p-1 text-xs font-semibold">
+        <div id="lang-pill" class="lang-pill absolute left-1 top-1 h-6 w-9 rounded-full"></div>
+        <button data-lang="vi" class="lang-btn is-active relative z-10 h-6 w-9 cursor-pointer">VI</button>
+        <button data-lang="ja" class="lang-btn relative z-10 h-6 w-9 cursor-pointer">JP</button>
+        <button data-lang="en" class="lang-btn relative z-10 h-6 w-9 cursor-pointer">EN</button>
       </div>
 
       <a
         href={`${base}/contact`}
         data-i18n="navCta"
-        class="hidden bg-[#0B1F3A] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#173660] sm:inline-block"
+        class="hdr-cta btn-sweep hidden px-5 py-2.5 text-xs font-semibold uppercase tracking-wider sm:inline-block"
       >
         Tư vấn ngay
       </a>
 
-      <!-- Mobile Hamburger Button -->
       <button
         id="mobile-menu-btn"
-        aria-label="Toggle Menu"
-        class="flex h-10 w-10 cursor-pointer items-center justify-center border border-slate-200 text-slate-700 lg:hidden"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="burger flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-[5px] lg:hidden"
       >
-        <svg id="icon-open" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="icon-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
-  <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-6 py-4 lg:hidden">
-    <nav class="flex flex-col space-y-3 text-sm font-medium text-slate-700">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          data-i18n={link.i18n}
-          class="border-b border-slate-100 py-2 transition-colors hover:text-[#0B1F3A]"
-        >
-          {link.label}
-        </a>
-      ))}
-      <a
-        href={`${base}/contact`}
-        data-i18n="navCta"
-        class="mt-2 bg-[#0B1F3A] px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-white"
-      >
-        Tư vấn ngay
-      </a>
-    </nav>
-  </div>
-
-  <!-- 2px Scroll Progress Bar -->
-  <div class="h-[2px] w-full bg-transparent">
-    <div id="scroll-progress" class="h-full w-0 bg-[#0B1F3A] transition-[width] duration-75"></div>
+  <!-- Scroll progress -->
+  <div class="absolute inset-x-0 bottom-0 h-[2px]">
+    <div id="scroll-progress" class="h-full w-0 bg-sky-500"></div>
   </div>
 </header>
 
-<script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
+<!-- Full-screen mobile menu -->
+<div id="mobile-menu" class="mobile-menu fixed inset-0 z-40 bg-white lg:hidden" aria-hidden="true">
+  <nav class="flex h-full flex-col justify-center gap-2 px-6 pt-20">
+    {navLinks.map((link, i) => (
+      <a
+        href={link.href}
+        class="mm-link flex items-baseline gap-4 border-b border-slate-100 py-4 text-navy"
+        style={`--i:${i}`}
+      >
+        <span class="font-mono text-xs text-sky-700">0{i + 1}</span>
+        <span data-i18n={link.i18n} class="text-2xl font-bold sm:text-3xl">{link.label}</span>
+      </a>
+    ))}
+    <a
+      href={`${base}/contact`}
+      data-i18n="navCta"
+      class="mm-link mt-6 bg-navy px-5 py-4 text-center text-sm font-semibold uppercase tracking-wider text-white"
+      style={`--i:${navLinks.length}`}
+    >
+      Tư vấn ngay
+    </a>
+    <p class="mm-link mt-8 font-jp text-xs tracking-[0.3em] text-slate-400" style={`--i:${navLinks.length + 1}`}>
+      日本の技術を、ベトナムの未来へ
+    </p>
+  </nav>
+</div>
 
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    iconOpen?.classList.toggle('hidden');
-    iconClose?.classList.toggle('hidden');
-  });
+<style>
+  .site-header {
+    color: #fff;
+    view-transition-name: site-header;
+    transition: transform 0.6s var(--ease-expo), color 0.3s ease;
+  }
+  .header-bg {
+    background: rgb(255 255 255 / 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgb(226 232 240);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .hdr-inner {
+    height: 5.5rem;
+    transition: height 0.4s var(--ease-expo);
+  }
+  .site-header.is-solid {
+    color: var(--color-navy);
+  }
+  .site-header.is-solid .header-bg {
+    opacity: 1;
+  }
+  .site-header.is-solid .hdr-inner {
+    height: 4.25rem;
+  }
+  .site-header.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  /* Logo */
+  .logo-mark {
+    background: #fff;
+    color: var(--color-navy);
+    transition: background-color 0.3s, color 0.3s, transform 0.5s var(--ease-expo);
+  }
+  .is-solid .logo-mark {
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  /* Nav links with sliding underline */
+  .nav-link {
+    position: relative;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    opacity: 1;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-wipe);
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Language switcher */
+  .lang-switch {
+    border: 1px solid rgb(255 255 255 / 0.25);
+    background: rgb(255 255 255 / 0.08);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .is-solid .lang-switch {
+    border-color: rgb(226 232 240);
+    background: rgb(241 245 249);
+  }
+  .lang-pill {
+    background: #fff;
+    transition: transform 0.45s var(--ease-expo), background-color 0.3s;
+  }
+  .is-solid .lang-pill {
+    background: var(--color-navy);
+  }
+  .lang-btn {
+    color: inherit;
+    opacity: 0.7;
+    transition: color 0.3s, opacity 0.3s;
+  }
+  .lang-btn:hover {
+    opacity: 1;
+  }
+  .lang-btn.is-active {
+    opacity: 1;
+    color: var(--color-navy);
+  }
+  .is-solid .lang-btn.is-active {
+    color: #fff;
+  }
+
+  /* CTA */
+  .hdr-cta {
+    background: #fff;
+    color: var(--color-navy);
+    --sweep: #e0f2fe;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  .is-solid .hdr-cta {
+    background: var(--color-navy);
+    color: #fff;
+    --sweep: var(--color-navy-2);
+  }
+
+  /* Burger → X */
+  .burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.45s var(--ease-expo), opacity 0.3s;
+  }
+  .menu-open .burger span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .menu-open .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-open .burger span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition: clip-path 0.7s var(--ease-wipe), visibility 0s linear 0.7s;
+  }
+  .mobile-menu.open {
+    clip-path: inset(0 0 0 0);
+    visibility: visible;
+    transition: clip-path 0.7s var(--ease-wipe), visibility 0s;
+  }
+  .mm-link {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s var(--ease-expo), transform 0.6s var(--ease-expo);
+  }
+  .mobile-menu.open .mm-link {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 70ms + 0.25s);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const menu = document.getElementById('mobile-menu');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  let menuOpen = false;
+  let lastY = window.scrollY;
+
+  const update = () => {
+    if (!header) return;
+    const y = window.scrollY;
+    header.classList.toggle('is-solid', y > 40 || menuOpen);
+    if (!menuOpen && Math.abs(y - lastY) > 6) {
+      header.classList.toggle('is-hidden', y > lastY && y > 240);
+      lastY = y;
+    }
+  };
+
+  const setMenu = (open: boolean) => {
+    menuOpen = open;
+    header?.classList.toggle('menu-open', open);
+    header?.classList.remove('is-hidden');
+    menu?.classList.toggle('open', open);
+    menu?.setAttribute('aria-hidden', String(!open));
+    menuBtn?.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    update();
+  };
+
+  menuBtn?.addEventListener('click', () => setMenu(!menuOpen));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  window.addEventListener('keydown', (e) => e.key === 'Escape' && menuOpen && setMenu(false));
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 </script>

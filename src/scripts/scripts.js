@@ -132,6 +132,21 @@ const translations = {
     formSubmit: 'Gửi yêu cầu tư vấn',
     opt1: 'Nông nghiệp tuần hoàn', opt2: 'Xử lý chất thải & Môi trường',
     opt3: 'Tự động hóa & Sản xuất thông minh', opt4: 'Tư vấn chuyển giao công nghệ khác',
+
+    // Added for redesign
+    navHome: 'Trang chủ',
+    aboutMore: 'Tìm hiểu thêm về chúng tôi',
+    srvMore: 'Xem tất cả dịch vụ →',
+    projMore: 'Xem tất cả dự án →',
+    processDesc: 'Từ khảo sát đến vận hành, mỗi bước đều được kiểm soát theo tiêu chuẩn chất lượng Nhật Bản.',
+    stepLabel: 'BƯỚC',
+    footerCtaEyebrow: 'Bắt đầu dự án',
+    footerCtaTitle: 'Cùng kiến tạo tương lai bền vững.',
+    footerCtaBtn: 'Liên hệ ngay',
+    backToTop: 'Lên đầu trang',
+    formSuccess: 'Cảm ơn quý khách! Yêu cầu đã được gửi thành công.',
+    formError: 'Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua Hotline.',
+    formNetwork: 'Không thể kết nối máy chủ. Vui lòng kiểm tra mạng và thử lại.',
   },
 
   ja: {
@@ -266,6 +281,21 @@ const translations = {
     formSubmit: 'お問い合わせを送信',
     opt1: '循環型農業', opt2: '廃棄物処理・環境ソリューション',
     opt3: '自動化・スマート製造', opt4: 'その他の技術移転に関するご相談',
+
+    // Added for redesign
+    navHome: 'ホーム',
+    aboutMore: '会社概要を見る',
+    srvMore: 'すべての事業を見る →',
+    projMore: 'すべての実績を見る →',
+    processDesc: '現地調査から運用まで、すべての工程を日本の品質基準で管理します。',
+    stepLabel: 'STEP',
+    footerCtaEyebrow: 'プロジェクトを始める',
+    footerCtaTitle: '持続可能な未来を、共に創る。',
+    footerCtaBtn: 'お問い合わせ',
+    backToTop: 'ページトップへ',
+    formSuccess: 'お問い合わせありがとうございます。送信が完了しました。',
+    formError: 'エラーが発生しました。もう一度お試しいただくか、お電話にてご連絡ください。',
+    formNetwork: 'サーバーに接続できません。通信環境をご確認のうえ、再度お試しください。',
   },
 
   en: {
@@ -400,117 +430,66 @@ const translations = {
     formSubmit: 'Submit Inquiry',
     opt1: 'Circular Agriculture', opt2: 'Waste & Environmental Solutions',
     opt3: 'Automation & Smart Manufacturing', opt4: 'Other Technology Transfer Inquiry',
+
+    // Added for redesign
+    navHome: 'Home',
+    aboutMore: 'Learn more about us',
+    srvMore: 'View all services →',
+    projMore: 'View all projects →',
+    processDesc: 'From site survey to operation, every step is controlled to Japanese quality standards.',
+    stepLabel: 'STEP',
+    footerCtaEyebrow: 'Start a project',
+    footerCtaTitle: 'Building a sustainable future, together.',
+    footerCtaBtn: 'Contact us',
+    backToTop: 'Back to top',
+    formSuccess: 'Thank you! Your inquiry has been sent successfully.',
+    formError: 'Something went wrong. Please try again or call our hotline.',
+    formNetwork: 'Could not reach the server. Please check your connection and try again.',
   },
 };
 
-const buttons = document.querySelectorAll('.lang-btn');
 const pill = document.getElementById('lang-pill');
+const langOrder = ['vi', 'ja', 'en'];
+
+const getLang = () => {
+  try {
+    return localStorage.getItem('japantech_lang') || 'vi';
+  } catch {
+    return 'vi';
+  }
+};
+const t = (key) => (translations[getLang()] || translations.vi)[key] || translations.vi[key];
 
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.vi;
-  const langOrder = ['vi', 'ja', 'en'];
   const index = Math.max(0, langOrder.indexOf(lang));
 
-  if (pill) {
-    pill.style.transform = `translateX(${index * 100}%)`;
-  }
+  if (pill) pill.style.transform = `translateX(${index * 100}%)`;
 
-  buttons.forEach((b) => {
+  document.querySelectorAll('[data-lang]').forEach((b) => {
     const isMatch = b.getAttribute('data-lang') === lang;
-    b.classList.toggle('text-white', isMatch);
-    b.classList.toggle('hover:text-slate-900', !isMatch);
+    b.classList.toggle('is-active', isMatch);
+    b.setAttribute('aria-pressed', String(isMatch));
   });
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
-    if (key && dict[key]) {
-      el.textContent = dict[key];
-    }
+    if (key && dict[key]) el.textContent = dict[key];
   });
 
   document.documentElement.lang = lang;
-  localStorage.setItem('japantech_lang', lang);
+  try {
+    localStorage.setItem('japantech_lang', lang);
+  } catch {}
 }
 
-const savedLang = localStorage.getItem('japantech_lang') || 'vi';
-applyLanguage(savedLang);
+applyLanguage(getLang());
 
-buttons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang') || 'vi';
-    applyLanguage(lang);
-  });
+document.querySelectorAll('[data-lang]').forEach((btn) => {
+  btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang') || 'vi'));
 });
 
-// 2. Smooth Scroll Reveal + Staggered Child Animations
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        if (entry.target.classList.contains('reveal-stagger')) {
-          Array.from(entry.target.children).forEach((child, idx) => {
-            child.style.transitionDelay = `${idx * 100}ms`;
-            child.classList.add('visible');
-          });
-        }
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-);
-
-document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
-  revealObserver.observe(el);
-});
-
-// 3. Animated Number Counters
-const animateCounter = (el) => {
-  const target = Number(el.getAttribute('data-target') || 0);
-  const suffix = el.getAttribute('data-suffix') || '';
-  const padZero = el.getAttribute('data-pad') === 'true';
-  const duration = 1200;
-  const startTime = performance.now();
-
-  const update = (now) => {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(eased * target);
-    const formatted = padZero && current < 10 ? `0${current}` : `${current}`;
-    el.textContent = `${formatted}${suffix}`;
-
-    if (progress < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-};
-
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.3 }
-);
-document.querySelectorAll('.counter').forEach((el) => counterObserver.observe(el));
-
-// 4. 2px Top Scroll Progress Bar
-const progressBar = document.getElementById('scroll-progress');
-window.addEventListener(
-  'scroll',
-  () => {
-    if (!progressBar) return;
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${progress}%`;
-  },
-  { passive: true }
-);
+// (Scroll reveals, counters and progress bar now live in motion.js)
 
 // 5. Live Contact Form Submission (Web3Forms)
 const form = document.getElementById('contact-form');
@@ -534,20 +513,19 @@ form?.addEventListener('submit', async (e) => {
 
     status.classList.remove('hidden', 'text-red-600', 'text-emerald-700');
     if (result.success) {
-      status.textContent = 'Cảm ơn quý khách! Yêu cầu đã được gửi thành công.';
+      status.textContent = t('formSuccess');
       status.classList.add('text-emerald-700');
       form.reset();
     } else {
-      status.textContent = 'Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua Hotline.';
+      status.textContent = t('formError');
       status.classList.add('text-red-600');
     }
   } catch {
-    status.classList.remove('hidden');
+    status.classList.remove('hidden', 'text-emerald-700');
     status.classList.add('text-red-600');
-    status.textContent = 'Không thể kết nối máy chủ. Vui lòng kiểm tra mạng và thử lại.';
+    status.textContent = t('formNetwork');
   } finally {
-    const lang = localStorage.getItem('japantech_lang') || 'vi';
-    submitBtn.textContent = (translations[lang] || translations.vi).formSubmit;
+    submitBtn.textContent = t('formSubmit');
     submitBtn.disabled = false;
   }
 });
